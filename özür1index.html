@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Özür 💗</title>
+
+  <style>
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #f7d9e3, #e8b7c9);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      transition: background 1s ease;
+    }
+
+    .card {
+      background: white;
+      padding: 30px;
+      border-radius: 20px;
+      max-width: 500px;
+      text-align: center;
+      box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+      position: relative;
+      z-index: 2;
+    }
+
+    h1 { color: #d6005a; margin-top: 0; }
+
+    p {
+      font-size: 18px;
+      line-height: 1.5;
+      color: #444;
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 12px 22px;
+      border: none;
+      border-radius: 30px;
+      font-size: 16px;
+      cursor: pointer;
+      background: #ff4d8d;
+      color: white;
+    }
+
+    #noBtn {
+      background: #ededed;
+      color: #aaa;
+      font-size: 13px;
+      padding: 8px 16px;
+      cursor: default;
+    }
+
+    .heart {
+      position: fixed;
+      bottom: -20px;
+      font-size: 22px;
+      animation: rise 4s linear forwards;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .star {
+      position: fixed;
+      top: -20px;
+      font-size: 16px;
+      animation: fall 6s linear forwards;
+      opacity: 0.9;
+      z-index: 1;
+    }
+
+    .moon {
+      position: fixed;
+      top: 40px;
+      right: 40px;
+      font-size: 60px;
+      opacity: 0.9;
+      z-index: 1;
+    }
+
+    .teddy {
+      position: fixed;
+      bottom: 30px;
+      left: 30px;
+      font-size: 50px;
+      opacity: 0.9;
+      z-index: 1;
+    }
+
+    @keyframes rise {
+      from { transform: translateY(0); opacity: 1; }
+      to { transform: translateY(-120vh); opacity: 0; }
+    }
+
+    @keyframes fall {
+      from { transform: translateY(0); opacity: 0; }
+      to { transform: translateY(120vh); opacity: 1; }
+    }
+
+    .hidden { display: none; }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <h1>Canım Sevgilim 💗</h1>
+    <h2 style="margin-top:5px;color:#ff4d8d;font-weight:normal;">Özür Dilerim</h2>
+    <p>
+      Seni üzdüysem, kalbinde en ufak bir kırgınlık bıraktıysam
+      gerçekten çok üzgünüm.<br><br>
+      Sen benim için sadece bir sevgili değil,
+      kalbimin en güzel yerisin.
+      Gülüşün huzurum, varlığın en büyük şansım.
+      <br><br>
+      Bu özür kelimelerden değil,
+      sana olan sevgimden geliyor.
+    </p>
+
+    <div id="question">
+      <p><strong>Beni affediyor musun?</strong></p>
+      <button id="yesBtn">Evet 💞</button>
+      <button id="noBtn">Hayır</button>
+    </div>
+
+    <div id="thanks" class="hidden">
+      <p>
+        Kalbim şu an biraz daha sakin,
+        biraz daha tamam…<br><br>
+        Sevgim gece gibi huzurlu,
+        yıldızlar kadar gerçek.
+      </p>
+      <p style="margin-top:15px;color:#ff4d8d;font-weight:bold;">
+        😄 Artık kız şakası yok, söz!
+      </p>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const yesBtn = document.getElementById('yesBtn');
+      yesBtn.addEventListener('click', yes);
+    });
+
+    function makeHearts(count = 25) {
+      for (let i = 0; i < count; i++) {
+        const heart = document.createElement('div');
+        heart.className = 'heart';
+        heart.textContent = '💗';
+        heart.style.left = Math.random() * 100 + 'vw';
+        heart.style.animationDuration = (3 + Math.random() * 2) + 's';
+        document.body.appendChild(heart);
+        setTimeout(() => heart.remove(), 5000);
+      }
+    }
+
+    function makeStars(count = 30) {
+      for (let i = 0; i < count; i++) {
+        const star = document.createElement('div');
+        star.className = 'star';
+        star.textContent = '✨';
+        star.style.left = Math.random() * 100 + 'vw';
+        star.style.animationDuration = (4 + Math.random() * 4) + 's';
+        document.body.appendChild(star);
+        setTimeout(() => star.remove(), 7000);
+      }
+    }
+
+    function yes() {
+      document.getElementById('question').classList.add('hidden');
+      document.getElementById('thanks').classList.remove('hidden');
+      document.body.style.background = 'linear-gradient(135deg, #0f2027, #203a43, #2c5364)';
+
+      const moon = document.createElement('div');
+      moon.className = 'moon';
+      moon.textContent = '🌙';
+      document.body.appendChild(moon);
+
+      const teddy = document.createElement('div');
+      teddy.className = 'teddy';
+      teddy.textContent = '🧸';
+      document.body.appendChild(teddy);
+
+      makeHearts(30);
+      makeStars(40);
+    }
+  </script>
+
+</body>
+</html>
